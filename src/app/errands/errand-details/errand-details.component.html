@@ -1,1 +1,28 @@
-<p>errand-details works!</p>
+<div *ngIf="errand">
+    <form (ngSubmit)="save()" #form="ngForm">
+        <div class="modal-header">
+            <strong>{{errand.name}}</strong>
+        </div>
+        <div class="modal-body">
+            <div *ngIf="alert">
+                <div *ngIf="alert.errorMessage" class="alert alert-danger" role="alert">
+                    {{alert.errorMessage}}
+                </div>
+                <div *ngIf="alert.successMessage" class="alert alert-success" role="alert">
+                    {{alert.successMessage}}
+                </div>
+            </div>
+            <ul>
+                <li>{{errands.title}}</li>
+                <li>{{errands.description}}</li>
+                <li>{{errands.price}}</li>
+                <li>{{errands.due}}</li>
+                <li>{{errands.location}}</li>
+                <li>{{errands.isFulfilled}}</li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button type="reset" class="btn btn-secondary btn-sm" (click)="close()">Close</button>
+        </div>
+    </form>
+</div>
